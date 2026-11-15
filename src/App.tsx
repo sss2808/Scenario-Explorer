@@ -61,7 +61,7 @@ export default function App({suite}:{suite:Suite}) {
             <tbody>{scenarios.map(s=><tr key={s.id}><th scope="row">{header(s)}<span className="row-context">{s.conditionalProposition}</span></th>{checkpoints.map(cp=>{
               const c=cell(s.id,cp.checkpointId);
               if(!c)return <td key={cp.checkpointId}>Unavailable</td>;
-              const active=c.id===selected;
+              const active=c.id===selected || c.milestoneIds.includes(selected);
               return <td key={cp.checkpointId}><button className={'cell-button'+(active?' chosen':'')} aria-pressed={active} onClick={()=>{setHorizon(cp.checkpointId);inspect(c.milestoneIds[0]||c.id);}}>
                 <span className="cell-window">{cp.label}</span><span>{c.milestoneIds.length?itemLabel(c.milestoneIds[0]):c.emptyReason}</span>
                 <span className="cell-action">Inspect claim</span></button></td>;
