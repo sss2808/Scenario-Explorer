@@ -1,0 +1,1009 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scenario Explorer synthetic DTO v0.2",
+  "type": "object",
+  "required": [
+    "manifest",
+    "scenarioSuite",
+    "referenceState",
+    "conditions",
+    "scenarios",
+    "scenarioCheckpointStates",
+    "drivers",
+    "criticalUncertainties",
+    "actors",
+    "assumptions",
+    "mechanisms",
+    "transitions",
+    "milestones",
+    "outcomes",
+    "signposts",
+    "counterpaths",
+    "relationships",
+    "references",
+    "reviewEvents",
+    "revisions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "packageId",
+        "packageRevision",
+        "releaseEpoch",
+        "distributionClass",
+        "contentSha256",
+        "destination",
+        "allowedPurpose",
+        "allowedAudience",
+        "createdAt"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "0.2.0"
+        },
+        "packageId": {
+          "type": "string"
+        },
+        "packageRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "releaseEpoch": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "distributionClass": {
+          "enum": [
+            "synthetic",
+            "public_cleared"
+          ]
+        },
+        "contentSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "destination": {
+          "type": "string"
+        },
+        "allowedPurpose": {
+          "type": "string"
+        },
+        "allowedAudience": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        }
+      }
+    },
+    "scenarioSuite": {
+      "type": "object",
+      "required": [
+        "id",
+        "profileId",
+        "referenceDate",
+        "archetypeProfile",
+        "checkpoints"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "profileId": {
+          "type": "string"
+        },
+        "referenceDate": {
+          "type": "string"
+        },
+        "archetypeProfile": {
+          "type": "array"
+        },
+        "checkpoints": {
+          "type": "array"
+        }
+      },
+      "additionalProperties": true
+    },
+    "referenceState": {
+      "type": "object",
+      "required": [
+        "id",
+        "epistemicKind",
+        "modelReviewStatus",
+        "rightsStatus",
+        "syntheticExample"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "epistemicKind": {
+          "enum": [
+            "observed",
+            "reported",
+            "interpretation",
+            "hypothesis",
+            "assumption",
+            "projection",
+            "preference"
+          ]
+        },
+        "modelReviewStatus": {
+          "enum": [
+            "draft",
+            "challenged",
+            "accepted_for_model",
+            "rejected",
+            "superseded"
+          ]
+        },
+        "rightsStatus": {
+          "enum": [
+            "synthetic",
+            "public_cleared"
+          ]
+        },
+        "syntheticExample": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "scenarioCheckpointStates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "drivers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "criticalUncertainties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "actors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "mechanisms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "milestones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "outcomes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "signposts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "counterpaths": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "reviewEvents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "revisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "epistemicKind",
+          "modelReviewStatus",
+          "rightsStatus",
+          "syntheticExample"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "epistemicKind": {
+            "enum": [
+              "observed",
+              "reported",
+              "interpretation",
+              "hypothesis",
+              "assumption",
+              "projection",
+              "preference"
+            ]
+          },
+          "modelReviewStatus": {
+            "enum": [
+              "draft",
+              "challenged",
+              "accepted_for_model",
+              "rejected",
+              "superseded"
+            ]
+          },
+          "rightsStatus": {
+            "enum": [
+              "synthetic",
+              "public_cleared"
+            ]
+          },
+          "syntheticExample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}

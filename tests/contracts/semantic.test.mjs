@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import suite from '../../src/fixtures/synthetic-suite.v0.2.json' with {type:'json'};
+import {semanticErrors} from '../../src/contracts/semantic.mjs';
+import {digest} from '../../src/contracts/canonicalize.mjs';
+const cp=()=>structuredClone(suite);
+const reject=(p,code)=>assert.ok(semanticErrors(p).includes(code),code);
+test('fictional fixture validates with 12 addressable cells',()=>{assert.deepEqual(semanticErrors(suite),[]);assert.equal(suite.scenarioCheckpointStates.length,12);});
+test('immutable canonical SHA-256 matches published fixture',async()=>assert.equal(await digest(suite),suite.manifest.contentSha256));
+test('reference condition and nested uncertainty state closure',()=>{const p=cp();p.referenceState.conditionIds=['missing'];reject(p,'DANGLING_ID');const q=cp();q.criticalUncertainties[0].states[1].id=q.criticalUncertainties[0].states[0].id;reject(q,'DUPLICATE_ID');});
+test('missing cell and unexplained empty state rejected',()=>{const p=cp();p.scenarioCheckpointStates.pop();reject(p,'MISSING_CELL');const q=cp();delete q.scenarioCheckpointStates.find(x=>x.milestoneIds.length===0).emptyReason;reject(q,'EMPTY_CELL_UNEXPLAINED');});
+test('conditional causal feedback allowed, dependency cycle denied',()=>{assert.deepEqual(semanticErrors(suite),[]);const p=cp();p.relationships.push({...p.relationships[0],id:'bad-dependency',fromId:'asm-new_normal',toId:'mech-new_normal'});reject(p,'DEPENDENCY_CYCLE');});
+test('insecure content and rights status denied',()=>{const p=cp();p.conditions[0].statement='<script>boom</script>';reject(p,'UNSAFE_TEXT');const q=cp();q.drivers[0].rightsStatus='unverified';reject(q,'INVALID_RECORD_STATUS');});
