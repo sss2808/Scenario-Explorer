@@ -1,0 +1,1034 @@
+{
+  "manifest": {
+    "schemaVersion": "0.2.0",
+    "packageId": "syn-workshop-01",
+    "packageRevision": 1,
+    "releaseEpoch": 0,
+    "distributionClass": "synthetic",
+    "destination": "scenario-explorer-demo",
+    "allowedPurpose": "fictional-demonstration",
+    "allowedAudience": "public",
+    "createdAt": "2026-11-15T00:00:00Z",
+    "contentSha256": "1a0043058ba57a5c3460e97df2d8243970585a4dab750b814f9366db42247441"
+  },
+  "scenarioSuite": {
+    "id": "suite-workshop",
+    "profileId": "gsa-four-paths-demo",
+    "title": "Imaginary Workshop Futures",
+    "focalQuestion": "How might a wholly fictional workshop route imaginary tokens?",
+    "systemBoundary": "Invented workshop only, no real evidence",
+    "referenceDate": "2026-01-01",
+    "archetypeProfile": [
+      {
+        "archetypeId": "baseline",
+        "label": "Baseline"
+      },
+      {
+        "archetypeId": "new_normal",
+        "label": "New Normal"
+      },
+      {
+        "archetypeId": "collapse",
+        "label": "Collapse"
+      },
+      {
+        "archetypeId": "ideal",
+        "label": "Ideal"
+      }
+    ],
+    "checkpoints": [
+      {
+        "checkpointId": "cp3",
+        "offsetYears": 3,
+        "label": "+3 years"
+      },
+      {
+        "checkpointId": "cp5",
+        "offsetYears": 5,
+        "label": "+5 years"
+      },
+      {
+        "checkpointId": "cp10",
+        "offsetYears": 10,
+        "label": "+10 years"
+      }
+    ]
+  },
+  "referenceState": {
+    "id": "ref-2026",
+    "asOfDate": "2026-01-01",
+    "summary": "An imaginary workshop starts with a handwritten token ledger.",
+    "conditionIds": [
+      "cond-ledger"
+    ],
+    "epistemicKind": "hypothesis",
+    "modelReviewStatus": "draft",
+    "rightsStatus": "synthetic",
+    "syntheticExample": true
+  },
+  "conditions": [
+    {
+      "id": "cond-ledger",
+      "statement": "The invented workshop uses manual token routing.",
+      "epistemicKind": "hypothesis",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "sc-baseline",
+      "archetypeId": "baseline",
+      "label": "Baseline",
+      "conditionalProposition": "Manual token routing persists",
+      "differentiationRationale": "A distinct invented assumption changes the routing mechanism.",
+      "criticalUncertaintyStateIds": [
+        "ustate-coordinated"
+      ],
+      "assumptionIds": [
+        "asm-baseline"
+      ],
+      "mechanismIds": [
+        "mech-baseline"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "sc-new_normal",
+      "archetypeId": "new_normal",
+      "label": "New Normal",
+      "conditionalProposition": "A pooled routing rule takes hold",
+      "differentiationRationale": "A distinct invented assumption changes the routing mechanism.",
+      "criticalUncertaintyStateIds": [
+        "ustate-coordinated"
+      ],
+      "assumptionIds": [
+        "asm-new_normal"
+      ],
+      "mechanismIds": [
+        "mech-new_normal"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "sc-collapse",
+      "archetypeId": "collapse",
+      "label": "Collapse",
+      "conditionalProposition": "Coordination breaks and routes fragment",
+      "differentiationRationale": "A distinct invented assumption changes the routing mechanism.",
+      "criticalUncertaintyStateIds": [
+        "ustate-isolated"
+      ],
+      "assumptionIds": [
+        "asm-collapse"
+      ],
+      "mechanismIds": [
+        "mech-collapse"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "sc-ideal",
+      "archetypeId": "ideal",
+      "label": "Ideal",
+      "conditionalProposition": "A desired shared reserve becomes feasible only with cooperation",
+      "differentiationRationale": "A distinct invented assumption changes the routing mechanism.",
+      "criticalUncertaintyStateIds": [
+        "ustate-coordinated"
+      ],
+      "assumptionIds": [
+        "asm-ideal"
+      ],
+      "mechanismIds": [
+        "mech-ideal"
+      ],
+      "normativeGoal": "Preferred fair access, not a probability or a forecast.",
+      "feasibilityConstraints": [
+        "Requires sustained fictional cooperation and maintenance."
+      ],
+      "epistemicKind": "preference",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    }
+  ],
+  "scenarioCheckpointStates": [
+    {
+      "id": "cell-baseline-3",
+      "scenarioId": "sc-baseline",
+      "checkpointId": "cp3",
+      "milestoneIds": [
+        "mil-baseline-3"
+      ],
+      "summary": "Conditional +3 assessment of the baseline future.",
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "cell-baseline-5",
+      "scenarioId": "sc-baseline",
+      "checkpointId": "cp5",
+      "milestoneIds": [
+        "mil-baseline-5"
+      ],
+      "summary": "Conditional +5 assessment of the baseline future.",
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "cell-baseline-10",
+      "scenarioId": "sc-baseline",
+      "checkpointId": "cp10",
+      "milestoneIds": [
+        "mil-baseline-10"
+      ],
+      "summary": "Conditional +10 assessment of the baseline future.",
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "cell-new_normal-3",
+      "scenarioId": "sc-new_normal",
+      "checkpointId": "cp3",
+      "milestoneIds": [
+        "mil-new_normal-3"
+      ],
+      "summary": "Conditional +3 assessment of the new normal future.",
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "cell-new_normal-5",
+      "scenarioId": "sc-new_normal",
+      "checkpointId": "cp5",
+      "milestoneIds": [
+        "mil-new_normal-5"
+      ],
+      "summary": "Conditional +5 assessment of the new normal future.",
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "cell-new_normal-10",
+      "scenarioId": "sc-new_normal",
+      "checkpointId": "cp10",
+      "milestoneIds": [
+        "mil-new_normal-10"
+      ],
+      "summary": "Conditional +10 assessment of the new normal future.",
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "cell-collapse-3",
+      "scenarioId": "sc-collapse",
+      "checkpointId": "cp3",
+      "milestoneIds": [
+        "mil-collapse-3"
+      ],
+      "summary": "Conditional +3 assessment of the collapse future.",
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "cell-collapse-5",
+      "scenarioId": "sc-collapse",
+      "checkpointId": "cp5",
+      "milestoneIds": [],
+      "summary": "No fictional milestone supplied.",
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "emptyReason": "No milestone supplied for this hypothetical checkpoint.",
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "cell-collapse-10",
+      "scenarioId": "sc-collapse",
+      "checkpointId": "cp10",
+      "milestoneIds": [
+        "mil-collapse-10"
+      ],
+      "summary": "Conditional +10 assessment of the collapse future.",
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "cell-ideal-3",
+      "scenarioId": "sc-ideal",
+      "checkpointId": "cp3",
+      "milestoneIds": [
+        "mil-ideal-3"
+      ],
+      "summary": "Conditional +3 assessment of the ideal future.",
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "cell-ideal-5",
+      "scenarioId": "sc-ideal",
+      "checkpointId": "cp5",
+      "milestoneIds": [
+        "mil-ideal-5"
+      ],
+      "summary": "Conditional +5 assessment of the ideal future.",
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "cell-ideal-10",
+      "scenarioId": "sc-ideal",
+      "checkpointId": "cp10",
+      "milestoneIds": [
+        "mil-ideal-10"
+      ],
+      "summary": "Conditional +10 assessment of the ideal future.",
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    }
+  ],
+  "drivers": [
+    {
+      "id": "drv-tokens",
+      "statement": "Availability of imaginary routing tokens",
+      "domainTags": [
+        "systems"
+      ],
+      "uncertaintyIds": [
+        "unc-coordination"
+      ],
+      "scopeScenarioIds": [
+        "sc-baseline",
+        "sc-new_normal",
+        "sc-collapse",
+        "sc-ideal"
+      ],
+      "epistemicKind": "hypothesis",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    }
+  ],
+  "criticalUncertainties": [
+    {
+      "id": "unc-coordination",
+      "question": "Would fictional teams cooperate?",
+      "states": [
+        {
+          "id": "ustate-coordinated",
+          "proposition": "Fictional cooperation continues",
+          "epistemicKind": "hypothesis",
+          "modelReviewStatus": "draft",
+          "rightsStatus": "synthetic",
+          "syntheticExample": true
+        },
+        {
+          "id": "ustate-isolated",
+          "proposition": "Fictional coordination stops",
+          "epistemicKind": "hypothesis",
+          "modelReviewStatus": "draft",
+          "rightsStatus": "synthetic",
+          "syntheticExample": true
+        }
+      ],
+      "dependencyIds": [],
+      "discriminatorSignpostIds": [
+        "sign-audit"
+      ],
+      "epistemicKind": "hypothesis",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    }
+  ],
+  "actors": [
+    {
+      "id": "actor-teams",
+      "role": "Fictional workshop teams",
+      "capabilities": [
+        "Route invented tokens"
+      ],
+      "constraints": [
+        "Imaginary capacity"
+      ],
+      "incentives": [
+        "Reduce fictional handoffs"
+      ],
+      "epistemicKind": "hypothesis",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "asm-baseline",
+      "statement": "Manual ledgers remain workable",
+      "scenarioIds": [
+        "sc-baseline"
+      ],
+      "rationale": "Invented premise for this alternate future.",
+      "alternativeAssumptionIds": [],
+      "reviewTrigger": "Hypothetical workshop audit",
+      "epistemicKind": "assumption",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "asm-new_normal",
+      "statement": "Teams accept common allocation",
+      "scenarioIds": [
+        "sc-new_normal"
+      ],
+      "rationale": "Invented premise for this alternate future.",
+      "alternativeAssumptionIds": [],
+      "reviewTrigger": "Hypothetical workshop audit",
+      "epistemicKind": "assumption",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "asm-collapse",
+      "statement": "Teams isolate their routing rules",
+      "scenarioIds": [
+        "sc-collapse"
+      ],
+      "rationale": "Invented premise for this alternate future.",
+      "alternativeAssumptionIds": [],
+      "reviewTrigger": "Hypothetical workshop audit",
+      "epistemicKind": "assumption",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "asm-ideal",
+      "statement": "A cooperative reserve stays funded",
+      "scenarioIds": [
+        "sc-ideal"
+      ],
+      "rationale": "Invented premise for this alternate future.",
+      "alternativeAssumptionIds": [],
+      "reviewTrigger": "Hypothetical workshop audit",
+      "epistemicKind": "assumption",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "mech-baseline",
+      "conditionalProcess": "Keep manual dispatch",
+      "requiredAssumptionIds": [
+        "asm-baseline"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "driverIds": [
+        "drv-tokens"
+      ],
+      "scenarioIds": [
+        "sc-baseline"
+      ],
+      "epistemicKind": "hypothesis",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "mech-new_normal",
+      "conditionalProcess": "Allocate tokens using a shared pool",
+      "requiredAssumptionIds": [
+        "asm-new_normal"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "driverIds": [
+        "drv-tokens"
+      ],
+      "scenarioIds": [
+        "sc-new_normal"
+      ],
+      "epistemicKind": "hypothesis",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "mech-collapse",
+      "conditionalProcess": "Separate incompatible routing queues",
+      "requiredAssumptionIds": [
+        "asm-collapse"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "driverIds": [
+        "drv-tokens"
+      ],
+      "scenarioIds": [
+        "sc-collapse"
+      ],
+      "epistemicKind": "hypothesis",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "mech-ideal",
+      "conditionalProcess": "Fund and maintain a fair token reserve",
+      "requiredAssumptionIds": [
+        "asm-ideal"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "driverIds": [
+        "drv-tokens"
+      ],
+      "scenarioIds": [
+        "sc-ideal"
+      ],
+      "epistemicKind": "hypothesis",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    }
+  ],
+  "transitions": [
+    {
+      "id": "trans-normal",
+      "scenarioId": "sc-new_normal",
+      "fromCheckpointId": "cp3",
+      "toCheckpointId": "cp5",
+      "relativeWindowLabel": "Between +3 and +5",
+      "sequenceOrder": 1,
+      "mechanismIds": [
+        "mech-new_normal"
+      ],
+      "assumptionIds": [
+        "asm-new_normal"
+      ],
+      "forkGroupId": "coordination-fork",
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "trans-collapse",
+      "scenarioId": "sc-collapse",
+      "fromCheckpointId": "cp3",
+      "toCheckpointId": "cp5",
+      "relativeWindowLabel": "Between +3 and +5",
+      "sequenceOrder": 1,
+      "mechanismIds": [
+        "mech-collapse"
+      ],
+      "assumptionIds": [
+        "asm-collapse"
+      ],
+      "forkGroupId": "coordination-fork",
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    }
+  ],
+  "milestones": [
+    {
+      "id": "mil-baseline-3",
+      "scenarioId": "sc-baseline",
+      "checkpointId": "cp3",
+      "conditionalStateChange": "In this invented baseline future, token routing changes conditionally by +3.",
+      "mechanismIds": [
+        "mech-baseline"
+      ],
+      "assumptionIds": [
+        "asm-baseline"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "outcomeIds": [
+        "out-routing"
+      ],
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "counterpathIds": [],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "mil-baseline-5",
+      "scenarioId": "sc-baseline",
+      "checkpointId": "cp5",
+      "conditionalStateChange": "In this invented baseline future, token routing changes conditionally by +5.",
+      "mechanismIds": [
+        "mech-baseline"
+      ],
+      "assumptionIds": [
+        "asm-baseline"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "outcomeIds": [
+        "out-routing"
+      ],
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "counterpathIds": [],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "mil-baseline-10",
+      "scenarioId": "sc-baseline",
+      "checkpointId": "cp10",
+      "conditionalStateChange": "In this invented baseline future, token routing changes conditionally by +10.",
+      "mechanismIds": [
+        "mech-baseline"
+      ],
+      "assumptionIds": [
+        "asm-baseline"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "outcomeIds": [
+        "out-routing"
+      ],
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "counterpathIds": [],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "mil-new_normal-3",
+      "scenarioId": "sc-new_normal",
+      "checkpointId": "cp3",
+      "conditionalStateChange": "In this invented new normal future, token routing changes conditionally by +3.",
+      "mechanismIds": [
+        "mech-new_normal"
+      ],
+      "assumptionIds": [
+        "asm-new_normal"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "outcomeIds": [
+        "out-routing"
+      ],
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "counterpathIds": [],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "mil-new_normal-5",
+      "scenarioId": "sc-new_normal",
+      "checkpointId": "cp5",
+      "conditionalStateChange": "In this invented new normal future, token routing changes conditionally by +5.",
+      "mechanismIds": [
+        "mech-new_normal"
+      ],
+      "assumptionIds": [
+        "asm-new_normal"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "outcomeIds": [
+        "out-routing"
+      ],
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "counterpathIds": [],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "mil-new_normal-10",
+      "scenarioId": "sc-new_normal",
+      "checkpointId": "cp10",
+      "conditionalStateChange": "In this invented new normal future, token routing changes conditionally by +10.",
+      "mechanismIds": [
+        "mech-new_normal"
+      ],
+      "assumptionIds": [
+        "asm-new_normal"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "outcomeIds": [
+        "out-routing"
+      ],
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "counterpathIds": [],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "mil-collapse-3",
+      "scenarioId": "sc-collapse",
+      "checkpointId": "cp3",
+      "conditionalStateChange": "In this invented collapse future, token routing changes conditionally by +3.",
+      "mechanismIds": [
+        "mech-collapse"
+      ],
+      "assumptionIds": [
+        "asm-collapse"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "outcomeIds": [
+        "out-routing"
+      ],
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "counterpathIds": [
+        "counter-recovery"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "mil-collapse-10",
+      "scenarioId": "sc-collapse",
+      "checkpointId": "cp10",
+      "conditionalStateChange": "In this invented collapse future, token routing changes conditionally by +10.",
+      "mechanismIds": [
+        "mech-collapse"
+      ],
+      "assumptionIds": [
+        "asm-collapse"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "outcomeIds": [
+        "out-routing"
+      ],
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "counterpathIds": [
+        "counter-recovery"
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "mil-ideal-3",
+      "scenarioId": "sc-ideal",
+      "checkpointId": "cp3",
+      "conditionalStateChange": "In this invented ideal future, token routing changes conditionally by +3.",
+      "mechanismIds": [
+        "mech-ideal"
+      ],
+      "assumptionIds": [
+        "asm-ideal"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "outcomeIds": [
+        "out-routing"
+      ],
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "counterpathIds": [],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "mil-ideal-5",
+      "scenarioId": "sc-ideal",
+      "checkpointId": "cp5",
+      "conditionalStateChange": "In this invented ideal future, token routing changes conditionally by +5.",
+      "mechanismIds": [
+        "mech-ideal"
+      ],
+      "assumptionIds": [
+        "asm-ideal"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "outcomeIds": [
+        "out-routing"
+      ],
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "counterpathIds": [],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "mil-ideal-10",
+      "scenarioId": "sc-ideal",
+      "checkpointId": "cp10",
+      "conditionalStateChange": "In this invented ideal future, token routing changes conditionally by +10.",
+      "mechanismIds": [
+        "mech-ideal"
+      ],
+      "assumptionIds": [
+        "asm-ideal"
+      ],
+      "actorIds": [
+        "actor-teams"
+      ],
+      "outcomeIds": [
+        "out-routing"
+      ],
+      "signpostIds": [
+        "sign-audit"
+      ],
+      "counterpathIds": [],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "out-routing",
+      "statement": "Hypothetical routing experiences differ by future.",
+      "affectedActorIds": [
+        "actor-teams"
+      ],
+      "scenarioIds": [
+        "sc-baseline",
+        "sc-new_normal",
+        "sc-collapse",
+        "sc-ideal"
+      ],
+      "tradeoffs": [
+        "Coordination requires invented maintenance."
+      ],
+      "epistemicKind": "projection",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    }
+  ],
+  "signposts": [
+    {
+      "id": "sign-audit",
+      "observableDescription": "A fictional weekly audit could reveal mismatched routes.",
+      "scenarioIds": [
+        "sc-baseline",
+        "sc-new_normal",
+        "sc-collapse",
+        "sc-ideal"
+      ],
+      "reviewTrigger": "If such an audit were invented",
+      "limitation": "Future signpost, not measured evidence.",
+      "epistemicKind": "hypothesis",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    }
+  ],
+  "counterpaths": [
+    {
+      "id": "counter-recovery",
+      "challengesEntityId": "asm-collapse",
+      "alternativePremise": "Coordination returns after an imaginary audit.",
+      "alternativeMechanismIds": [
+        "mech-new_normal"
+      ],
+      "scenarioIds": [
+        "sc-collapse"
+      ],
+      "disconfirmingSignpostIds": [
+        "sign-audit"
+      ],
+      "epistemicKind": "hypothesis",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel-dependent",
+      "fromId": "mech-new_normal",
+      "toId": "asm-new_normal",
+      "predicate": "depends_on",
+      "scenarioIds": [
+        "sc-new_normal"
+      ],
+      "qualification": "Conditional on cooperation.",
+      "conditionalOnAssumptionIds": [
+        "asm-new_normal"
+      ],
+      "epistemicKind": "hypothesis",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "rel-challenge",
+      "fromId": "counter-recovery",
+      "toId": "asm-collapse",
+      "predicate": "challenges",
+      "scenarioIds": [
+        "sc-collapse"
+      ],
+      "qualification": "The assumed loss of cooperation may reverse.",
+      "conditionalOnAssumptionIds": [],
+      "epistemicKind": "hypothesis",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "rel-feedback-1",
+      "fromId": "drv-tokens",
+      "toId": "mech-new_normal",
+      "predicate": "amplifies",
+      "scenarioIds": [
+        "sc-new_normal"
+      ],
+      "qualification": "Fictional bounded causal feedback.",
+      "conditionalOnAssumptionIds": [
+        "asm-new_normal"
+      ],
+      "epistemicKind": "hypothesis",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    },
+    {
+      "id": "rel-feedback-2",
+      "fromId": "mech-new_normal",
+      "toId": "drv-tokens",
+      "predicate": "dampens",
+      "scenarioIds": [
+        "sc-new_normal"
+      ],
+      "qualification": "Hypothetical counteracting feedback.",
+      "conditionalOnAssumptionIds": [
+        "asm-new_normal"
+      ],
+      "epistemicKind": "hypothesis",
+      "modelReviewStatus": "draft",
+      "rightsStatus": "synthetic",
+      "syntheticExample": true
+    }
+  ],
+  "references": [],
+  "reviewEvents": [],
+  "revisions": []
+}
