@@ -41,6 +41,7 @@
       entries.set(name,{method,csize,usize,local});
       offset+=46+nameLen+extra+comment;
     }
+    if([...entries.keys()].some(name=>/vbaProject\.bin|externalLinks\/|embeddings\/|oleObjects\/|customUI\//i.test(name)))fail('Macro-enabled, embedded or external-linked workbook content is not permitted');
     async function entry(name,optional=false){
       const spec=entries.get(name);
       if(!spec){if(optional)return null;fail('Excel package missing '+name);}
