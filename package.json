@@ -1,0 +1,13 @@
+{
+  "name": "scenario-explorer-radial",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/workbook/*.test.mjs"
+  },
+  "description": "Visual-first Scenario Explorer, static D3 radial network with local fictional Excel importer",
+  "engines": {
+    "node": ">=20"
+  }
+}
