@@ -45,3 +45,14 @@ The import accepts the following worksheets: `Project`, `Domains`, `Signals`, `L
 Run `npm test` (or `node --test tests/workbook/*.test.mjs`) with Node 20+; this suite uses only built-in Node modules and does **not** need `npm install`, a package lock or network access. It validates workbook rows, stable IDs, structural links, future names, dynamic windows and diagnostic failures. Separate observed browser testing still needs to verify real `.xlsx` selection, ZIP/XML parsing, preview/apply, SVG redraw, keyboard and mobile fidelity against the owner portfolio reference.
 
 The two generated authoring artifacts were delivered to the owner in the conversation as `scenario_explorer_fictional_workbook.xlsx` and `scenario_explorer_blank_template.xlsx`. They are not yet committed to this source branch, so reviewers should obtain the owner-delivered files for real-browser import testing. The source is draft until those observations are captured.
+
+## Downloadable Excel example workbooks
+
+- [Blank template](examples/scenario_explorer_blank_template.xlsx) (required worksheets and novice instructions, enter your own fictional records).
+- [Filled fictional workshop](examples/scenario_explorer_fictional_workbook.xlsx) (5 system domains, 12 signals, 11 relationships, 3 future modes, 3 configurable time windows).
+
+Both are real, macro-free `.xlsx` files committed to the same PR. The filled workbook is an independent wholly invented example, **not** a portfolio source export or GSA record. Select **Refine → Import Excel** in the existing radial explorer, choose the filled workbook, review the preview and click **Apply to radial explorer**. Use **Restore portfolio** to return to the original radial dataset.
+
+Workbook model validation and ZIP extraction were checked against the committed GitHub files; browser file-picker, preview, SVG redraw, desktop/mobile screenshots, fullscreen and keyboard acceptance are still pending on the approved isolated browser runner. The blank workbook intentionally produces missing-required-field diagnostics until filled. Dataset editing never grants publication rights.
+
+Source fidelity policy: do not restyle or replace the original portfolio D3 radial interface while implementing workbook binding.
