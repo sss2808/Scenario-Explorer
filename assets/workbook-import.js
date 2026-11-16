@@ -128,7 +128,7 @@
   }
   function element(tag,text){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;}
   function install(){
-    const anchor=document.querySelector('.inline-filters')||document.querySelector('.topbar-controls')||document.body;
+    const anchor=document.getElementById('refine-dropdown')||document.querySelector('.inline-filters')||document.querySelector('.topbar-controls')||document.body;
     const toggle=element('button','Import Excel');
     toggle.type='button';toggle.id='import-excel';toggle.className='compact-filter';
     toggle.setAttribute('aria-expanded','false');

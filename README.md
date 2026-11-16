@@ -27,7 +27,7 @@ The public demo uses only the already published illustrative portfolio explorer.
 
 The workbook importer is part of the **original D3 radial network** in `explorer.html`, not the shelved table application. The original portfolio CSS and all four original illustrative image assets remain unchanged. No uploaded workbook is sent to a server.
 
-1. Open the existing explorer. Select **Import Excel** in its current filter toolbar.
+1. Open the existing explorer. Open the existing **Refine** filter popover, then select **Import Excel**. The import control stays hidden until Refine opens, preserving the unchanged initial portfolio toolbar.
 2. Choose a fictional `.xlsx` authoring workbook (or an exported, versioned `.json` file).
 3. Review sheet/row/column errors and dataset counts. Select **Apply to radial explorer** to reload the same D3 renderer using the imported domains, stable signal IDs, domain/signal relationships, STEEP/time/type options and scenario narratives/focus sets.
 4. Use **Export JSON** for a deterministic local reimport, or **Restore portfolio** to restore the original illustrative 8-domain radial dataset.
