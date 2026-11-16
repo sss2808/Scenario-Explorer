@@ -1,5 +1,6 @@
 import React from 'react';
 import {entityIndex} from './contracts/semantic.mjs';
+import {scenarioAt} from './selectors/scenarioAt.mjs';
 
 type Scenario = {id:string;label:string;archetypeId:string;conditionalProposition:string;assumptionIds:string[];mechanismIds:string[];criticalUncertaintyStateIds:string[];normativeGoal?:string};
 type Checkpoint = {checkpointId:string;offsetYears:number;label:string};
@@ -14,10 +15,10 @@ function Summary({value}:{value:any}) {
 export default function App({suite}:{suite:Suite}) {
   const scenarios=suite.scenarios;
   const checkpoints=suite.scenarioSuite.checkpoints;
-  const [horizon,setHorizon]=React.useState(checkpoints[1].checkpointId);
-  const [left,setLeft]=React.useState(scenarios[0].id);
-  const [right,setRight]=React.useState(scenarios[1].id);
-  const [selected,setSelected]=React.useState('cell-baseline-5');
+  const [horizon,setHorizon]=React.useState(checkpoints[0]?.checkpointId ?? '');
+  const [left,setLeft]=React.useState(scenarios[0]?.id ?? '');
+  const [right,setRight]=React.useState(scenarios[1]?.id ?? scenarios[0]?.id ?? '');
+  const [selected,setSelected]=React.useState(suite.scenarioCheckpointStates[0]?.milestoneIds?.[0] ?? suite.scenarioCheckpointStates[0]?.id ?? '');
   const [inspectorOpen,setInspectorOpen]=React.useState(true);
   const [showAllText,setShowAllText]=React.useState(false);
   const inspectorRef=React.useRef<HTMLElement>(null);
@@ -35,11 +36,7 @@ export default function App({suite}:{suite:Suite}) {
     ...suite.relationships.filter((r:any)=>r.fromId===selected||r.toId===selected).map((r:any)=>r.id)
   ])] as string[]):[];
   const header=(s:Scenario)=>s.label+(s.archetypeId==='ideal'?' (preferred, conditional)':'');
-  const details=(s:Scenario)=> {
-    const c=cell(s.id,horizon),m=c?.milestoneIds[0];
-    return {scenario:s.label,premise:s.conditionalProposition,change:m?itemLabel(m):c?.emptyReason||'No milestone supplied',mechanism:s.mechanismIds.map(itemLabel).join('; '),signpost:(c?.milestoneIds.length?suite.milestones.find((x:any)=>x.id===m):null)?itemLabel('sign-audit'):'No signpost attached to an event',review:'Hypothetical, not an observed future'};
-  };
-  const a=details(sc(left)||scenarios[0]),b=details(sc(right)||scenarios[1]);
+  const a=scenarioAt(suite,left,horizon),b=scenarioAt(suite,right,horizon);
   return <div className="shell">
     <header className="hero">
       <p className="eyebrow">Scenario Explorer</p>
@@ -77,7 +74,7 @@ export default function App({suite}:{suite:Suite}) {
         <div className="section-head"><div><p className="eyebrow">Conditional contrast</p><h2 id="diff-heading">Compare two futures</h2></div><label>Window <select value={horizon} onChange={e=>setHorizon(e.target.value)}>{checkpoints.map(c=><option key={c.checkpointId} value={c.checkpointId}>{c.label}</option>)}</select></label></div>
         <div className="chooser"><label>First future <select value={left} onChange={e=>setLeft(e.target.value)}>{scenarios.map(s=><option key={s.id} value={s.id}>{s.label}</option>)}</select></label><label>Second future <select value={right} onChange={e=>setRight(e.target.value)}>{scenarios.map(s=><option key={s.id} value={s.id}>{s.label}</option>)}</select></label></div>
         {left===right?<p className="help">Choose two different futures to see their contrasting premises.</p>:<div className="diff" role="group" aria-label={'Two scenarios at '+activeCp.label}>
-          {[a,b].map((d,i)=><article className="comparison-card" key={i}><h3>{d.scenario}</h3><h4>Defining premise</h4><p>{d.premise}</p><h4>Conditional checkpoint</h4><p>{d.change}</p><h4>Underlying mechanism</h4><p>{d.mechanism}</p><h4>Signpost</h4><p>{d.signpost}</p><p className="quiet">{d.review}</p></article>)}
+          {[a,b].map((d,i)=><article className="comparison-card" key={i}><h3>{d?.scenario}</h3><h4>Defining premise</h4><p>{d?.premise}</p><h4>Conditional checkpoint</h4><p>{d?.change}</p><h4>Underlying mechanism</h4><p>{d?.mechanism}</p><h4>Signpost</h4><p>{d?.signpost}</p><p className="quiet">{d?.review}</p></article>)}
         </div>}
       </section>
       <section className="section" aria-labelledby="inspector-section-title">

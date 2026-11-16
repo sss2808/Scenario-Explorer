@@ -11,3 +11,33 @@ test('reference condition and nested uncertainty state closure',()=>{const p=cp(
 test('missing cell and unexplained empty state rejected',()=>{const p=cp();p.scenarioCheckpointStates.pop();reject(p,'MISSING_CELL');const q=cp();delete q.scenarioCheckpointStates.find(x=>x.milestoneIds.length===0).emptyReason;reject(q,'EMPTY_CELL_UNEXPLAINED');});
 test('conditional causal feedback allowed, dependency cycle denied',()=>{assert.deepEqual(semanticErrors(suite),[]);const p=cp();p.relationships.push({...p.relationships[0],id:'bad-dependency',fromId:'asm-new_normal',toId:'mech-new_normal'});reject(p,'DEPENDENCY_CYCLE');});
 test('insecure content and rights status denied',()=>{const p=cp();p.conditions[0].statement='<script>boom</script>';reject(p,'UNSAFE_TEXT');const q=cp();q.drivers[0].rightsStatus='unverified';reject(q,'INVALID_RECORD_STATUS');});
+
+test('typed closure rejects every supported C0 edge family',()=>{
+  const cases=[
+    ['drivers','uncertaintyIds','criticalUncertainties'],
+    ['drivers','scopeScenarioIds','conditions'],
+    ['assumptions','scenarioIds','conditions'],
+    ['assumptions','alternativeAssumptionIds','conditions'],
+    ['mechanisms','requiredAssumptionIds','conditions'],
+    ['mechanisms','actorIds','conditions'],
+    ['mechanisms','driverIds','conditions'],
+    ['scenarioCheckpointStates','signpostIds','conditions'],
+    ['transitions','mechanismIds','conditions'],
+    ['transitions','assumptionIds','conditions'],
+    ['outcomes','affectedActorIds','conditions'],
+    ['outcomes','scenarioIds','conditions'],
+    ['counterpaths','disconfirmingSignpostIds','conditions'],
+    ['relationships','conditionalOnAssumptionIds','conditions']
+  ];
+  for(const [kind,key] of cases){
+    const p=cp();p[kind][0][key]=['cond-ledger'];
+    if(kind==='drivers'&&key==='uncertaintyIds')p[kind][0][key]=['actor-teams'];
+    reject(p,'WRONG_REFERENCE_TYPE');
+  }
+});
+test('generic suite requires nonempty and ordered checkpoints',()=>{
+  const p=cp();p.scenarioSuite.profileId='fictional-generic';p.scenarioSuite.checkpoints=[];
+  reject(p,'EMPTY_SUITE_PROFILE');
+  const q=cp();q.scenarioSuite.profileId='fictional-generic';q.scenarioSuite.checkpoints=[q.scenarioSuite.checkpoints[2],q.scenarioSuite.checkpoints[0],q.scenarioSuite.checkpoints[1]];
+  reject(q,'UNORDERED_CHECKPOINTS');
+});

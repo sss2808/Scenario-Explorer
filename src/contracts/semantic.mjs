@@ -83,6 +83,75 @@ export function semanticErrors(pkg) {
   const visited=new Set(),active=new Set();
   function traverse(id){if(active.has(id)){bad('DEPENDENCY_CYCLE');return;}if(visited.has(id))return;visited.add(id);active.add(id);for(const n of dependencies.get(id)||[])traverse(n);active.delete(id);}
   for(const id of dependencies.keys())traverse(id);
+
+  // P1 exact typed closure: no public synthetic record may point to a missing or wrong-kind entity.
+  const refs=(row,field,type)=>{for(const id of row[field]||[])ref(id,type);};
+  const scoped=(row,field)=>refs(row,field,'scenarios');
+  for(const row of pkg.drivers) {
+    refs(row,'uncertaintyIds','criticalUncertainties');
+    scoped(row,'scopeScenarioIds');
+  }
+  for(const row of pkg.criticalUncertainties) {
+    refs(row,'discriminatorSignpostIds','signposts');
+  }
+  for(const row of pkg.assumptions) {
+    scoped(row,'scenarioIds');
+    refs(row,'alternativeAssumptionIds','assumptions');
+  }
+  for(const row of pkg.mechanisms) {
+    refs(row,'requiredAssumptionIds','assumptions');
+    refs(row,'actorIds','actors');
+    refs(row,'driverIds','drivers');
+    scoped(row,'scenarioIds');
+  }
+  for(const row of pkg.scenarioCheckpointStates) {
+    refs(row,'signpostIds','signposts');
+  }
+  for(const row of pkg.transitions) {
+    refs(row,'mechanismIds','mechanisms');
+    refs(row,'assumptionIds','assumptions');
+    refs(row,'alternativeTransitionIds','transitions');
+    if(row.reversalOfId)ref(row.reversalOfId,'transitions');
+  }
+  for(const row of pkg.milestones) {
+    refs(row,'assumptionIds','assumptions');
+    refs(row,'mechanismIds','mechanisms');
+    refs(row,'actorIds','actors');
+    refs(row,'outcomeIds','outcomes');
+    refs(row,'signpostIds','signposts');
+    refs(row,'transitionIds','transitions');
+    refs(row,'counterpathIds','counterpaths');
+  }
+  for(const row of pkg.outcomes) {
+    refs(row,'affectedActorIds','actors');
+    scoped(row,'scenarioIds');
+  }
+  for(const row of pkg.signposts)scoped(row,'scenarioIds');
+  for(const row of pkg.counterpaths) {
+    scoped(row,'scenarioIds');
+    refs(row,'disconfirmingSignpostIds','signposts');
+  }
+  for(const row of pkg.relationships) {
+    scoped(row,'scenarioIds');
+    refs(row,'conditionalOnAssumptionIds','assumptions');
+    refs(row,'supportingReferenceIds','references');
+    refs(row,'challengingReferenceIds','references');
+  }
+  for(const row of pkg.reviewEvents)ref(row.targetEntityId);
+  for(const row of pkg.revisions) {
+    refs(row,'affectedEntityIds');
+    refs(row,'impactedEntityIds');
+    refs(row,'reviewEventIds','reviewEvents');
+  }
+  for(const row of pkg.scenarios) {
+    if(!arch.some(a=>a.archetypeId===row.archetypeId))bad('SCENARIO_ARCHETYPE_MISMATCH');
+  }
+  if(!pkg.scenarios.length||!cp.length||!arch.length)bad('EMPTY_SUITE_PROFILE');
+  if(new Set(arch.map(a=>a.archetypeId)).size!==arch.length)bad('DUPLICATE_ARCHETYPE');
+  if(new Set(cp.map(c=>c.checkpointId)).size!==cp.length)bad('DUPLICATE_CHECKPOINT');
+  if(cp.some(c=>!Number.isInteger(c.offsetYears)||c.offsetYears<=0)||cp.some((c,i)=>i>0&&cp[i-1].offsetYears>=c.offsetYears))bad('UNORDERED_CHECKPOINTS');
+  if(seenIds.has(pkg.referenceState.id)||seenIds.has(pkg.scenarioSuite.id)||pkg.referenceState.id===pkg.scenarioSuite.id)bad('DUPLICATE_ID');
+
   if(seenIds.size>2000||pkg.relationships.length+pkg.references.length>5000)bad('MAX_RECORDS');
   return [...faults];
 }

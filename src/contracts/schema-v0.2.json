@@ -1113,7 +1113,8 @@
           "summary",
           "syntheticExample"
         ]
-      }
+      },
+      "minItems": 1
     },
     "scenarioSuite": {
       "type": "object",
@@ -1138,7 +1139,8 @@
               "archetypeId",
               "label"
             ]
-          }
+          },
+          "minItems": 1
         },
         "checkpoints": {
           "type": "array",
@@ -1163,7 +1165,8 @@
               "label",
               "offsetYears"
             ]
-          }
+          },
+          "minItems": 1
         },
         "focalQuestion": {
           "type": "string",
@@ -1306,7 +1309,8 @@
           "rightsStatus",
           "syntheticExample"
         ]
-      }
+      },
+      "minItems": 1
     },
     "signposts": {
       "type": "array",
