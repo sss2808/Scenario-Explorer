@@ -39,3 +39,9 @@ The import accepts the following worksheets: `Project`, `Domains`, `Signals`, `L
 **Visual fidelity check:** original `<style>` bytes, four original portfolio JPEG data URLs, D3 vendor and SVG positioning/styling logic remain unchanged. The data-only branch points are explicitly isolated in `assets/workbook-model.js`, `assets/workbook-import.js`, and narrow `explorer.html` reads. Measured browser screenshot parity and keyboard/mobile acceptance remain distinct review evidence and must not be inferred from a source diff.
 
 **No merge/deploy/CI** without independent exact-HEAD acceptance and separate owner release permission.
+
+## Focused source/fixture tests
+
+Run `npm test` (or `node --test tests/workbook/*.test.mjs`) with Node 20+; this suite uses only built-in Node modules and does **not** need `npm install`, a package lock or network access. It validates workbook rows, stable IDs, structural links, future names, dynamic windows and diagnostic failures. Separate observed browser testing still needs to verify real `.xlsx` selection, ZIP/XML parsing, preview/apply, SVG redraw, keyboard and mobile fidelity against the owner portfolio reference.
+
+The two generated authoring artifacts were delivered to the owner in the conversation as `scenario_explorer_fictional_workbook.xlsx` and `scenario_explorer_blank_template.xlsx`. They are not yet committed to this source branch, so reviewers should obtain the owner-delivered files for real-browser import testing. The source is draft until those observations are captured.
