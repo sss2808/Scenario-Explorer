@@ -22,3 +22,20 @@ The prior `feat/p1-syn-01` branch and its draft PR #2 are **shelved**. They cont
 ## Boundaries
 
 The public demo uses only the already published illustrative portfolio explorer. Keep source-rights restrictions, attribution, and synthetic/conditional scenario caveats intact. Do not import restricted GSA records or identify individual research participants. Changes to the visual interaction require focused behavioral and keyboard/responsive testing before acceptance.
+
+## Excel-to-radial visualization binding (visual lock)
+
+The workbook importer is part of the **original D3 radial network** in `explorer.html`, not the shelved table application. The original portfolio CSS and all four original illustrative image assets remain unchanged. No uploaded workbook is sent to a server.
+
+1. Open the existing explorer. Select **Import Excel** in its current filter toolbar.
+2. Choose a fictional `.xlsx` authoring workbook (or an exported, versioned `.json` file).
+3. Review sheet/row/column errors and dataset counts. Select **Apply to radial explorer** to reload the same D3 renderer using the imported domains, stable signal IDs, domain/signal relationships, STEEP/time/type options and scenario narratives/focus sets.
+4. Use **Export JSON** for a deterministic local reimport, or **Restore portfolio** to restore the original illustrative 8-domain radial dataset.
+
+The import accepts the following worksheets: `Project`, `Domains`, `Signals`, `Links`, `Scenarios`, `Checkpoints`. The optional Instructions sheet explains fields. The first filled fictional example uses 5 domains, 12 signals, 11 typed links, 3 future scenarios and 3 windows; this intentionally differs from the original 8-domain/four-future portfolio. The blank and filled Excel artifacts were created in the owner conversation and remain available for authoring/testing.
+
+**Important:** The importer is local, synthetic-only and denies unknown references and restricted distribution. It deliberately does not authorize actual GSA publication, real participant/source data or external model access. Import previews do not automatically publish anything. Workbook parser uses browser-native ZIP decompression; browsers without `DecompressionStream('deflate-raw')` need a separately approved compatibility update. No package manager, remote API or backend is introduced.
+
+**Visual fidelity check:** original `<style>` bytes, four original portfolio JPEG data URLs, D3 vendor and SVG positioning/styling logic remain unchanged. The data-only branch points are explicitly isolated in `assets/workbook-model.js`, `assets/workbook-import.js`, and narrow `explorer.html` reads. Measured browser screenshot parity and keyboard/mobile acceptance remain distinct review evidence and must not be inferred from a source diff.
+
+**No merge/deploy/CI** without independent exact-HEAD acceptance and separate owner release permission.
