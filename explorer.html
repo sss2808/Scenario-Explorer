@@ -673,7 +673,7 @@ window.SCENARIO_EXPLORER_DATA = {
   function renderTopicPanel(){
     const d=topicData();if(!d)return;const chosen=signals.find(s=>s.id===state.innerFocus)||d.root;
     el.title.textContent=chosen.name;el.subtitle.textContent=chosen.steep+' · '+chosen.horizon;el.eyebrow.textContent='';
-    el.content.innerHTML='<button class="back-link" data-action="back">← Previous network</button><h3>'+htmlEscape(chosen.description||'An illustrative signal affecting equipment procurement.')+'</h3>'
+    el.content.innerHTML='<button class="back-link" data-action="back">← Previous network</button><h3>'+htmlEscape(chosen.description||(window.ScenarioWorkbookModel?.active?'No signal description supplied.':'An illustrative signal affecting equipment procurement.'))+'</h3>'
       +'<p>Connected system domains: '+htmlEscape(connectedThemes(chosen).map(id=>themeById.get(id)?.name).filter(Boolean).join(', '))+'.</p>'
       +'<p>Select inner signals to focus connections, or outer signals to explore another topic network.</p>'
       +'<p class="detail-disclaimer">These connections represent interpreted domain associations, not validated causal relationships.</p>';
@@ -718,7 +718,7 @@ window.SCENARIO_EXPLORER_DATA = {
       el.title.textContent=s.name;el.subtitle.textContent=`${s.steep} · ${s.horizon}`;el.eyebrow.textContent='Illustrative signal';
       el.content.innerHTML='<button class="back-link" data-action="back">← Back to the network</button>'
         +metaPills([s.classification,s.horizon,s.steep])
-        +`<h3>${htmlEscape(s.description||`This illustrative signal may influence how equipment is planned, evaluated, selected or supported.`)}</h3>`
+        +`<h3>${htmlEscape(s.description||(window.ScenarioWorkbookModel?.active?'No signal description supplied.':`This illustrative signal may influence how equipment is planned, evaluated, selected or supported.`))}</h3>`
         +`<p>Shown here as a possible influence on <strong>${htmlEscape(t.name)}</strong>${s.related.length?` and ${htmlEscape(s.related.map(id=>themeById.get(id)?.name).filter(Boolean).join(', '))}`:''}. Selecting the signal highlights its connected domains.</p>`
         +`<div class="detail-divider"></div><h4 class="detail-subhead">Planning question</h4><p>${htmlEscape(t.question)}</p>`
         +`<h4 class="detail-subhead">Potential strategic response</h4><p>${htmlEscape(t.response)}</p>`
@@ -730,15 +730,15 @@ window.SCENARIO_EXPLORER_DATA = {
       el.title.textContent=s.name;el.subtitle.textContent=s.subtitle;el.eyebrow.textContent=s.label;
       el.content.innerHTML=`<h3>${htmlEscape(s.lead)}</h3>`+contextSections(s)
         +(s.id==='ideal'?`<div class="detail-divider"></div><h4 class="detail-subhead">Illustrative future artifact</h4><p>An imagined equipment qualification record connects specifications, evidence and responsible decisions. This is a speculative design placeholder, not an existing technology or forecast.</p>`:'')
-        +`<p class="detail-disclaimer">${s.id==='ideal'?'Ideal is a preferred outcome for backcasting, not a prediction.':'A plausible structural scenario, not a prediction.'} Evidence links are illustrative.</p>`;
+        +`<p class="detail-disclaimer">${(s.id==='ideal'||s.kind==='preferred')?'A preferred future for backcasting, not a prediction.':'A plausible structural scenario, not a prediction.'} Evidence links are illustrative.</p>`;
       const credit=document.createElement('p');credit.className='scenario-photo-credit';
       const link=document.createElement('a');link.href=s.imagePage;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Photo: '+s.imageCredit;
       credit.appendChild(link);el.content.appendChild(credit);
       el.panelContext.textContent='';
       el.viewLabel.textContent=scenarioNavText();
     } else {
-      el.title.textContent='Manufacturing equipment futures';el.subtitle.textContent='An interconnected system of decisions and emerging change';el.eyebrow.textContent='Research network';
-      el.content.innerHTML=`<h3>Explore how the buying system could change.</h3><p>Choose a scenario to examine its possible implications. Select a domain or signal to explore the network.</p>`
+      el.title.textContent=window.ScenarioWorkbookModel?.active?source.project:'Manufacturing equipment futures';el.subtitle.textContent='An interconnected system of decisions and emerging change';el.eyebrow.textContent='Research network';
+      el.content.innerHTML=`<h3>${window.ScenarioWorkbookModel?.active?'Explore changes in this fictional system.':'Explore how the buying system could change.'}</h3><p>Choose a scenario to examine its possible implications. Select a domain or signal to explore the network.</p>`
         +`<button class="back-link" data-action="scenario">Explore the structural scenarios →</button><p class="detail-disclaimer">Illustrative data only. No confidential records or verified source attributions are embedded.</p>`;
       el.panelContext.textContent='Choose a system domain, signal or future state.';
       el.viewLabel.textContent='Overview';

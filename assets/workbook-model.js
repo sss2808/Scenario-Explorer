@@ -162,7 +162,7 @@
     if(!bridge.active) return fallback;
     return imported.map((s,i)=>{
       const image=fallback.find(x=>x.id===s.id)||fallback[i%fallback.length];
-      return {id:s.id,name:s.name,label:s.kind==='preferred'?'Preferred future · backcasting':'Plausible future',
+      return {id:s.id,name:s.name,kind:s.kind,label:s.kind==='preferred'?'Preferred future · backcasting':'Plausible future',
         subtitle:s.subtitle,lead:s.lead,paragraphs:s.paragraphs,risk:s.risk,response:s.response,
         watch:s.watch,focus:s.focus,
         image:image.image,imageAlt:'Illustrative photo, not evidence for this fictional scenario',
