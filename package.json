@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
-    "test": "node --test tests/contracts/*.test.mjs",
+    "test": "node --test tests/contracts/*.test.mjs tests/views/*.test.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -1,6 +1,7 @@
 import React from 'react';
 import {entityIndex} from './contracts/semantic.mjs';
 import {scenarioAt} from './selectors/scenarioAt.mjs';
+import {initialExplorerState} from './state/explorerDefaults.mjs';
 
 type Scenario = {id:string;label:string;archetypeId:string;conditionalProposition:string;assumptionIds:string[];mechanismIds:string[];criticalUncertaintyStateIds:string[];normativeGoal?:string};
 type Checkpoint = {checkpointId:string;offsetYears:number;label:string};
@@ -15,10 +16,11 @@ function Summary({value}:{value:any}) {
 export default function App({suite}:{suite:Suite}) {
   const scenarios=suite.scenarios;
   const checkpoints=suite.scenarioSuite.checkpoints;
-  const [horizon,setHorizon]=React.useState(checkpoints[0]?.checkpointId ?? '');
-  const [left,setLeft]=React.useState(scenarios[0]?.id ?? '');
-  const [right,setRight]=React.useState(scenarios[1]?.id ?? scenarios[0]?.id ?? '');
-  const [selected,setSelected]=React.useState(suite.scenarioCheckpointStates[0]?.milestoneIds?.[0] ?? suite.scenarioCheckpointStates[0]?.id ?? '');
+  const defaults=initialExplorerState(suite);
+  const [horizon,setHorizon]=React.useState(defaults.checkpointId);
+  const [left,setLeft]=React.useState(defaults.leftScenarioId);
+  const [right,setRight]=React.useState(defaults.rightScenarioId);
+  const [selected,setSelected]=React.useState(defaults.selectedEntityId);
   const [inspectorOpen,setInspectorOpen]=React.useState(true);
   const [showAllText,setShowAllText]=React.useState(false);
   const inspectorRef=React.useRef<HTMLElement>(null);

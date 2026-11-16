@@ -23,3 +23,18 @@ test('explicit missing milestone state with no hardcoded scenario assumptions',(
   const d=scenarioAt(p,p.scenarios[0].id,p.scenarioSuite.checkpoints[0].checkpointId);
   assert.equal(d.scenario,'Baseline');
 });
+
+test('generic single-checkpoint defaults derive from IDs, not GSA positions',async()=>{
+  const {initialExplorerState}=await import('../../src/state/explorerDefaults.mjs');
+  const p=structuredClone(suite);
+  p.scenarioSuite.profileId='fictional-generic';
+  p.scenarioSuite.checkpoints=[p.scenarioSuite.checkpoints[0]];
+  p.scenarioCheckpointStates=p.scenarioCheckpointStates.filter(c=>c.checkpointId==='cp3');
+  const init=initialExplorerState(p);
+  assert.equal(init.checkpointId,'cp3');
+  assert.equal(init.leftScenarioId,p.scenarios[0].id);
+  assert.equal(init.selectedEntityId,p.scenarioCheckpointStates[0].milestoneIds[0]);
+  p.scenarios=p.scenarios.slice(0,1);
+  const one=initialExplorerState(p);
+  assert.equal(one.leftScenarioId,one.rightScenarioId);
+});
