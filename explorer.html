@@ -729,7 +729,7 @@ window.SCENARIO_EXPLORER_DATA = {
       const s=scenarios[state.scenarioIndex];
       el.title.textContent=s.name;el.subtitle.textContent=s.subtitle;el.eyebrow.textContent=s.label;
       el.content.innerHTML=`<h3>${htmlEscape(s.lead)}</h3>`+contextSections(s)
-        +(s.id==='ideal'?`<div class="detail-divider"></div><h4 class="detail-subhead">Illustrative future artifact</h4><p>An imagined equipment qualification record connects specifications, evidence and responsible decisions. This is a speculative design placeholder, not an existing technology or forecast.</p>`:'')
+        +((s.id==='ideal'&&!window.ScenarioWorkbookModel?.active)?`<div class="detail-divider"></div><h4 class="detail-subhead">Illustrative future artifact</h4><p>An imagined equipment qualification record connects specifications, evidence and responsible decisions. This is a speculative design placeholder, not an existing technology or forecast.</p>`:'')
         +`<p class="detail-disclaimer">${(s.id==='ideal'||s.kind==='preferred')?'A preferred future for backcasting, not a prediction.':'A plausible structural scenario, not a prediction.'} Evidence links are illustrative.</p>`;
       const credit=document.createElement('p');credit.className='scenario-photo-credit';
       const link=document.createElement('a');link.href=s.imagePage;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Photo: '+s.imageCredit;
@@ -742,6 +742,11 @@ window.SCENARIO_EXPLORER_DATA = {
         +`<button class="back-link" data-action="scenario">Explore the structural scenarios →</button><p class="detail-disclaimer">Illustrative data only. No confidential records or verified source attributions are embedded.</p>`;
       el.panelContext.textContent='Choose a system domain, signal or future state.';
       el.viewLabel.textContent='Overview';
+    }
+    if(window.ScenarioWorkbookModel?.active){
+      const disclosure=document.createElement('p');disclosure.className='detail-disclaimer';
+      disclosure.textContent='SYNTHETIC EXAMPLE · Epistemic status: hypothetical/conditional · Rights: fictional demonstration only; not research-cleared.';
+      el.content.appendChild(disclosure);
     }
     if(resetScroll)el.panelBody.scrollTop=0;
     el.content.querySelectorAll('[data-action]').forEach(button=>button.addEventListener('click',()=>{
